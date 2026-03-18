@@ -34,6 +34,7 @@ export function Review() {
         const shuffled = fetchedCards.sort(() => Math.random() - 0.5);
         setCards(shuffled);
       } catch (error) {
+        setLoading(false);
         handleFirestoreError(error, OperationType.GET, 'flashcards');
       } finally {
         setLoading(false);

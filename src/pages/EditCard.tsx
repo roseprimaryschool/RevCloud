@@ -26,6 +26,7 @@ export function EditCard() {
           navigate('/');
         }
       } catch (error) {
+        setLoading(false);
         handleFirestoreError(error, OperationType.GET, `flashcards/${id}`);
       } finally {
         setLoading(false);

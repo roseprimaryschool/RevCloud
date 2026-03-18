@@ -37,8 +37,8 @@ export function Dashboard() {
       setFlashcards(cards);
       setLoading(false);
     }, (error) => {
-      handleFirestoreError(error, OperationType.LIST, 'flashcards');
       setLoading(false);
+      handleFirestoreError(error, OperationType.LIST, 'flashcards');
     });
 
     return () => unsubscribe();

@@ -33,7 +33,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             });
           }
         } catch (error) {
+          setLoading(false);
           handleFirestoreError(error, OperationType.CREATE, `users/${currentUser.uid}`);
+          return;
         }
       }
       setLoading(false);
