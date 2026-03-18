@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Flashcard": {
+      "title": "Flashcard",
+      "description": "A single revision flashcard",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who owns this flashcard" },
+        "front": { "type": "string", "description": "The front side of the flashcard (question)" },
+        "back": { "type": "string", "description": "The back side of the flashcard (answer)" },
+        "createdAt": { "type": "number", "description": "Timestamp when the flashcard was created" },
+        "lastReviewed": { "type": "number", "description": "Timestamp when the flashcard was last reviewed" },
+        "status": { "type": "string", "enum": ["new", "learning", "known"], "description": "The learning status of the card" }
+      },
+      "required": ["userId", "front", "back", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile data",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/flashcards/{cardId}": {
+      "schema": { "$ref": "#/entities/Flashcard" },
+      "description": "Stores all flashcards"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles"
+    }
+  }
+}
